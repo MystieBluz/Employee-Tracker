@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS employeeInfo_db;
 CREATE DATABASE employeeInfo_db;
+
 USE employeeInfo_db; 
 
 CREATE TABLE department (
