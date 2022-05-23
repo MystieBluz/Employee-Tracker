@@ -1,6 +1,10 @@
 // Packages
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
+const conTable = require('console.table');
+const figlet = require('figlet');
+const chalk = require('chalk');
+
 require('dotenv').config();
 
 // Connections
@@ -10,6 +14,16 @@ const connection = mysql.createConnection({
     password: 'root2022',
     database: employeeInfo_db,
 });
+
+connection.connect((error) => {
+    if (error) throw error;
+    console.log(chalk.magenta.bold("**********************"));
+    console.log(``);
+    console.log(chalk.yellow.bold(figlet.textSync('Employee Tracker')));
+    console.log(``);
+    console.log(chalk.magenta.bold("**********************"));
+    userPrompt();
+  });
 
 
 // Questions Array  
@@ -66,3 +80,13 @@ const userPrompt = () => {
     })
 }
 
+
+viewDepartments = () => {
+    const sql = `SELECT department.id AS id, department.name AS department FROM department`; 
+
+  connection.promise().query(sql, (err, rows) => {
+    if (err) throw err;
+    console.table(rows);
+    userPrompt();
+  }); 
+}
