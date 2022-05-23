@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root2022',
-    database: employeeInfo_db,
+    database: 'employeeTracker_db',
 });
 
 connection.connect((error) => {
@@ -90,3 +90,15 @@ viewDepartments = () => {
     userPrompt();
   }); 
 }
+
+viewRoles = () => {
+    const sql = `SELECT role.id, role.title, department.name AS department
+                 FROM role
+                 INNER JOIN department ON role.department_id = department.id`;
+    
+    connection.promise().query(sql, (err, rows) => {
+      if (err) throw err; 
+      console.table(rows); 
+      userPrompt();
+    })
+  };
