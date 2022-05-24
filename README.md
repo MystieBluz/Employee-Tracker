@@ -40,4 +40,3 @@
 
 
 ### Live Demo
-![](./assets/Live%20Demo_Employee%20Tracker.mp4)
