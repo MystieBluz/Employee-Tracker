@@ -17,10 +17,10 @@ const connection = mysql.createConnection({
 
 connection.connect((error) => {
     if (error) throw error;
-    console.log(chalk.magenta.inverse("*******************************************************************************************"));
-    console.log(chalk.yellow.bold(figlet.textSync('Employee Tracker')));
+    // console.log(chalk.magenta.inverse("*******************************************************************************************"));
+    console.log(chalk.magenta.bold(figlet.textSync('WELCOME')));
    
-    console.log(chalk.magenta.inverse("*******************************************************************************************"));
+    // console.log(chalk.magenta.inverse("*******************************************************************************************"));
     userPrompt();
   });
 
