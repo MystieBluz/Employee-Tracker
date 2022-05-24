@@ -17,11 +17,10 @@ const connection = mysql.createConnection({
 
 connection.connect((error) => {
     if (error) throw error;
-    console.log(chalk.magenta.bold("*******************************************"));
-    console.log(``);
+    console.log(chalk.magenta.inverse("*******************************************************************************************"));
     console.log(chalk.yellow.bold(figlet.textSync('Employee Tracker')));
-    console.log(``);
-    console.log(chalk.magenta.bold("*******************************************"));
+   
+    console.log(chalk.magenta.inverse("*******************************************************************************************"));
     userPrompt();
   });
 
@@ -165,7 +164,7 @@ addRole = () => {
       name: 'salary',
       message: "What is the salary of this role?",
       validate: addSalary => {
-        if (isNAN(addSalary)) {
+        if (!isNaN(addSalary)) {
             return true;
         } else {
             console.log('Please enter a salary');
